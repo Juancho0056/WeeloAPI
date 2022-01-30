@@ -20,7 +20,7 @@ Prueba
 	* [/api/Property/Delete](PropertyDelete)	
   
 1. Configurar base de datos en el archivo appsettings.json, ubicar la seccion ConnectionStrings -> DefaultConnection
-2. Abrir consola de comandos visual studio y ejecutar comando ```powershell update-dabase ```
+2. Abrir consola de comandos visual studio y ejecutar comando ```update-dabase ```
 3. Se crean los siguientes datos de acceso para prueba:
    - Username: administrator@localhost
    - Password: Administrator1!
