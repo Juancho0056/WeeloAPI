@@ -1,0 +1,491 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>WeeloApi.WebUI</name>
+    </assembly>
+    <members>
+        <member name="T:WeeloApi.WebUI.Controllers.ApiControllerBase">
+            <summary>
+            ApiControllerBase
+            </summary>
+        </member>
+        <member name="P:WeeloApi.WebUI.Controllers.ApiControllerBase.Mediator">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:WeeloApi.WebUI.Controllers.ApiControllerBase.Context">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:WeeloApi.WebUI.Controllers.ApiControllerBase.Configuration">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:WeeloApi.WebUI.Controllers.ApiControllerBase.Env">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:WeeloApi.WebUI.Controllers.ApiControllerBase.Command``2(``0)">
+            <summary>
+            
+            </summary>
+            <typeparam name="Request"></typeparam>
+            <typeparam name="Response"></typeparam>
+            <param name="command"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WeeloApi.WebUI.Controllers.ApiControllerBase.QueryImage``2(``0)">
+            <summary>
+            
+            </summary>
+            <typeparam name="Request"></typeparam>
+            <typeparam name="Response"></typeparam>
+            <param name="command"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WeeloApi.WebUI.Controllers.ApiControllerBase.Query``2(``0)">
+            <summary>
+            
+            </summary>
+            <typeparam name="Request"></typeparam>
+            <typeparam name="Response"></typeparam>
+            <param name="command"></param>
+            <returns></returns>
+        </member>
+        <member name="T:WeeloApi.WebUI.Controllers.OidcConfigurationController">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:WeeloApi.WebUI.Controllers.OidcConfigurationController.#ctor(Microsoft.AspNetCore.ApiAuthorization.IdentityServer.IClientRequestParametersProvider)">
+            <summary>
+            
+            </summary>
+            <param name="clientRequestParametersProvider"></param>
+        </member>
+        <member name="P:WeeloApi.WebUI.Controllers.OidcConfigurationController.ClientRequestParametersProvider">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:WeeloApi.WebUI.Controllers.OidcConfigurationController.GetClientRequestParameters(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="clientId"></param>
+            <returns></returns>
+        </member>
+        <member name="T:WeeloApi.WebUI.Controllers.v1.OwnerController">
+            <summary>
+            Controller for api/OwnerController
+            </summary>
+            
+        </member>
+        <member name="M:WeeloApi.WebUI.Controllers.v1.OwnerController.Get(WeeloApi.Application.Features.Owners.Queries.Get.GetOwnerRequest)">
+             <summary>
+             Get Owner
+             </summary>
+             <remarks>
+             Get record for the Owner filtered by the IdOwner parameter <code>GetOwnerRequest</code>
+             User must POST request
+             Sample request:
+            
+                 GET /api/Owner/Get?IdOwner=1
+             </remarks>
+             <param name="request">Identification to get Owner</param>
+             <returns>OwnerDto</returns>
+        </member>
+        <member name="M:WeeloApi.WebUI.Controllers.v1.OwnerController.GetAll(WeeloApi.Application.Features.Owners.Queries.GetAll.GetAllOwnerRequest)">
+             <summary>
+             Get All Owner
+             </summary>
+             <remarks>
+             Get all records for the Owner filtered by the class parameter <code>GetAllOwnerRequest</code>
+             
+             Sample request:
+            
+                 GET /api/Owner/GetAll?IdOwner=1&amp;Name=JUAN&amp;Address=TORRE&amp;PageNumber=1&amp;PageSize=10
+             </remarks>
+             <param name="request">Filter to get Owners</param>
+             <response code="200">Returns Photo by the IdOwner</response>
+             <response code="400">If the item is null</response>
+             <response code="404">If the item is not found</response>
+        </member>
+        <member name="M:WeeloApi.WebUI.Controllers.v1.OwnerController.GetPhoto(WeeloApi.Application.Features.Owners.Queries.Get.GetPhotoOwnerRequest)">
+             <summary>
+             Get Photo by Owner
+             </summary>
+             <remarks>
+             Sample request:
+            
+                 GET /api/Owner/GetPhoto?IdOwner=1
+             </remarks>
+             <response code="200">Returns Photo by the IdOwner</response>
+             <response code="400">If the item is null</response>
+             <response code="404">If the item is not found</response>
+        </member>
+        <member name="M:WeeloApi.WebUI.Controllers.v1.OwnerController.Create(WeeloApi.Application.Features.Owners.Commands.Create.CreateOwnerRequest)">
+             <summary>
+             Add Owner
+             </summary>
+             <remarks>
+             Create new record for Owner
+             
+             Sample request:
+            
+                 POST "/api/Owner/Create" 
+                 requestBody:
+                     required: true
+                     content:
+                     multipart/form-data:
+                 -Header  "Content-Type: multipart/form-data" -F "Name=JUAN CARLOS CARDONA" -F "Address=CRA 9 No 27 - 09 IBAGUE" -F "Birthday=2000-12-01T00:00:00.0000000" -F "Photo=@ínvitacionICX.png;type=image/png"
+             </remarks>
+             <param name="command">Data to create new Owner</param>
+             <returns>OwnerDto</returns>
+        </member>
+        <member name="M:WeeloApi.WebUI.Controllers.v1.OwnerController.Update(WeeloApi.Application.Features.Owners.Commands.Update.UpdateOwnerRequest)">
+             <summary>
+             Update Owner by Id
+             </summary>
+             <remarks>
+             Update record for Owner by IdOwner
+             
+             Sample request:
+            
+                 POST "/api/Owner/Update" -Header  "Content-Type: multipart/form-data" -F "IdOwner=1" -F "Name=JUAN CARLOS CARDONA" -F "Address=CRA 9 No 27 - 09 IBAGUE" -F "Birthday=2000-12-01T00:00:00.0000000" -F "Photo=@ínvitacionICX.png;type=image/png"
+             </remarks>
+             <param name="command">Instance for UpdateOwnerRequest</param>
+        </member>
+        <member name="M:WeeloApi.WebUI.Controllers.v1.OwnerController.Delete(WeeloApi.Application.Features.Owners.Commands.Delete.DeleteOwnerRequest)">
+             <summary>
+             Delete Owner by IdOwner
+             </summary>
+             <remarks>
+             Delete specific record for Owner
+             
+             Sample request:
+            
+                     DELETE /api/Owner/Delete?IdOwner=1
+             </remarks>
+             <param name="command">Instance for DeleteOwnerRequest</param>
+             <returns></returns>
+        </member>
+        <member name="T:WeeloApi.WebUI.Controllers.v1.PropertyController">
+            <summary>
+            Controller for api/PropertyController
+            </summary>
+            
+        </member>
+        <member name="M:WeeloApi.WebUI.Controllers.v1.PropertyController.Get(WeeloApi.Application.Features.Propertys.Queries.Get.GetPropertyRequest)">
+             <summary>
+             Get Property
+             </summary>
+             <remarks>
+             Get record for the Property filtered by the IdProperty parameter <code>GetPropertyRequest</code>
+             User must POST request
+             Sample request:
+            
+                 GET /api/Property/Get?IdProperty=1
+             </remarks>
+             <param name="request">Identification to get Property</param>
+             <returns>PropertyDto</returns>
+        </member>
+        <member name="M:WeeloApi.WebUI.Controllers.v1.PropertyController.GetAll(WeeloApi.Application.Features.Propertys.Queries.GetAll.GetAllPropertyRequest)">
+             <summary>
+             Get All Property
+             </summary>
+             <remarks>
+             Get all records for the Property filtered by the class parameter <code>GetAllPropertyRequest</code>
+             
+             Sample request:
+            
+                 GET /api/Property/GetAll?IdProperty=1&amp;Name=JUAN&amp;Address=TORRE&amp;PageNumber=1&amp;PageSize=10
+             </remarks>
+             <param name="request">Filter to get Propertys</param>
+             <response code="200">Returns all data Property</response>
+             <response code="400">If the item is null</response>
+             <response code="404">If the item is not found</response>
+        </member>
+        <member name="M:WeeloApi.WebUI.Controllers.v1.PropertyController.Create(WeeloApi.Application.Features.Propertys.Commands.Create.CreatePropertyRequest)">
+             <summary>
+             Add Property
+             </summary>
+             <remarks>
+             Create new record for Property
+             
+             Sample request:
+            
+                 POST "/api/Property/Create" 
+                 {
+                     "Name": "Torreon",
+                     "Address": "CRA 9 No 27 - 09 IBAGUE",
+                     "Year":"2021",
+                     "IdOwner":"1"
+                 }
+             </remarks>
+             <param name="command">Data to create new Property</param>
+             <returns>PropertyDto</returns>
+        </member>
+        <member name="M:WeeloApi.WebUI.Controllers.v1.PropertyController.Update(WeeloApi.Application.Features.Propertys.Commands.Update.UpdatePropertyRequest)">
+             <summary>
+             Update Property by Id
+             </summary>
+             <remarks>
+             Update record for Property by IdProperty
+             
+             Sample request:
+            
+                 POST "/api/Property/Update" 
+                 {
+                     "IdProperty":"1"
+                     "Name": "Torreon",
+                     "Address": "CRA 9 No 27 - 09 IBAGUE",
+                     "Price":"1000000",
+                     "Year":"2021",
+                     "IdOwner":"1"
+                 }
+             </remarks>
+             <param name="command">Instance for UpdatePropertyRequest</param>
+        </member>
+        <member name="M:WeeloApi.WebUI.Controllers.v1.PropertyController.ChangePrice(WeeloApi.Application.Features.Propertys.Commands.Update.ChangePriceRequest)">
+             <summary>
+             Update Property Price by Id
+             </summary>
+             <remarks>
+             Update record for Property by IdProperty
+             
+             Sample request:
+            
+                 POST "/api/Property/Update" 
+                 {
+                     "IdProperty":"1"
+                     "Price":"1000000"
+                 }
+             </remarks>
+             <param name="command">Instance for UpdatePropertyRequest</param>
+        </member>
+        <member name="M:WeeloApi.WebUI.Controllers.v1.PropertyController.Delete(WeeloApi.Application.Features.Propertys.Commands.Delete.DeletePropertyRequest)">
+             <summary>
+             Delete Property by IdProperty
+             </summary>
+             <remarks>
+             Delete specific record for Property
+             
+             Sample request:
+            
+                     DELETE /api/Property/Delete?IdProperty=1
+             </remarks>
+             <param name="command">Instance for DeletePropertyRequest</param>
+             <returns></returns>
+        </member>
+        <member name="M:WeeloApi.WebUI.Controllers.v1.PropertyController.CreateImage(WeeloApi.Application.Features.PropertyImages.Commands.CreateImage.CreatePropertyImageRequest)">
+             <summary>
+             Add ImageProperty
+             </summary>
+             <remarks>
+             Create new record for ImageProperty
+             
+             Sample request:
+            
+                 POST "/api/Property/CreateImage" 
+                 requestBody:
+                     required: true
+                     content:
+                     multipart/form-data:
+                 -Header  "Content-Type: multipart/form-data" -F "IdPropertyImage=1" -F "IdProperty=2" -F "Photo=@ínvitacionICX.png;type=image/png"
+             </remarks>
+             <param name="command">Data to create new PropertyImage</param>
+             <returns>PropertyImageDto</returns>
+        </member>
+        <member name="T:WeeloApi.WebUI.Filters.ApiExceptionFilterAttribute">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:WeeloApi.WebUI.Filters.ApiExceptionFilterAttribute.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:WeeloApi.WebUI.Filters.ApiExceptionFilterAttribute.OnException(Microsoft.AspNetCore.Mvc.Filters.ExceptionContext)">
+            <summary>
+            
+            </summary>
+            <param name="context"></param>
+        </member>
+        <member name="T:WeeloApi.WebUI.Filters.FileOperationFilter">
+            <summary>
+            Filter property File Swagger
+            </summary>
+        </member>
+        <member name="M:WeeloApi.WebUI.Filters.FileOperationFilter.Apply(Microsoft.OpenApi.Models.OpenApiOperation,Swashbuckle.AspNetCore.SwaggerGen.OperationFilterContext)">
+            <summary>
+            
+            </summary>
+            <param name="operation"></param>
+            <param name="context"></param>
+        </member>
+        <member name="T:WeeloApi.WebUI.Program">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:WeeloApi.WebUI.Program.Main(System.String[])">
+            <summary>
+            
+            </summary>
+            <param name="args"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WeeloApi.WebUI.Program.CreateHostBuilder(System.String[])">
+            <summary>
+            
+            </summary>
+            <param name="args"></param>
+            <returns></returns>
+        </member>
+        <member name="T:WeeloApi.WebUI.Services.CurrentUserService">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:WeeloApi.WebUI.Services.CurrentUserService.#ctor(Microsoft.AspNetCore.Http.IHttpContextAccessor)">
+            <summary>
+            
+            </summary>
+            <param name="httpContextAccessor"></param>
+        </member>
+        <member name="P:WeeloApi.WebUI.Services.CurrentUserService.UserId">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:WeeloApi.WebUI.Startup">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:WeeloApi.WebUI.Startup.#ctor(Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            
+            </summary>
+            <param name="configuration"></param>
+        </member>
+        <member name="P:WeeloApi.WebUI.Startup.Configuration">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:WeeloApi.WebUI.Startup.ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            
+            </summary>
+            <param name="services"></param>
+        </member>
+        <member name="M:WeeloApi.WebUI.Startup.Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IWebHostEnvironment)">
+            <summary>
+            
+            </summary>
+            <param name="app"></param>
+            <param name="env"></param>
+        </member>
+        <member name="T:WeeloApi.WebUI.Support.Configuration.Configuration">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:WeeloApi.WebUI.Support.Configuration.Configuration.ApplicationName">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:WeeloApi.WebUI.Support.Configuration.Configuration.ApplicationNameConnection">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:WeeloApi.WebUI.Support.Configuration.Configuration.SwaggerConfiguration">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:WeeloApi.WebUI.Support.Configuration.Configuration.SwaggerConfiguration.Version1">
+            <summary>
+            Swagger Version.
+            </summary>
+        </member>
+        <member name="F:WeeloApi.WebUI.Support.Configuration.Configuration.SwaggerConfiguration.Title">
+            <summary>
+            Swagger TermsOfService.
+            </summary>
+        </member>
+        <member name="F:WeeloApi.WebUI.Support.Configuration.Configuration.SwaggerConfiguration.Description">
+            <summary>
+            Swagger Description.
+            </summary>
+        </member>
+        <member name="F:WeeloApi.WebUI.Support.Configuration.Configuration.SwaggerConfiguration.TermsOfService">
+            <summary>
+            Swagger TermsOfService.
+            </summary>
+        </member>
+        <member name="F:WeeloApi.WebUI.Support.Configuration.Configuration.SwaggerConfiguration.ContactName">
+            <summary>
+            Swagger ContactName.
+            </summary>
+        </member>
+        <member name="F:WeeloApi.WebUI.Support.Configuration.Configuration.SwaggerConfiguration.ContactEmail">
+            <summary>
+            Swagger ContactEmail.
+            </summary>
+        </member>
+        <member name="F:WeeloApi.WebUI.Support.Configuration.Configuration.SwaggerConfiguration.ContactUrl">
+            <summary>
+            Swagger ContactUrl.
+            </summary>
+        </member>
+        <member name="T:WeeloApi.WebUI.Support.Configuration.Swagger.ApplicationBuilderExtensions">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:WeeloApi.WebUI.Support.Configuration.Swagger.ApplicationBuilderExtensions.ConfigureSwaggerUI(Microsoft.AspNetCore.Builder.IApplicationBuilder)">
+            <summary>
+            
+            </summary>
+            <param name="app"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WeeloApi.WebUI.Support.Configuration.Swagger.ApplicationBuilderExtensions.ConfigureCors(Microsoft.AspNetCore.Builder.IApplicationBuilder)">
+            <summary>
+            
+            </summary>
+            <param name="app"></param>
+            <returns></returns>
+        </member>
+        <member name="T:WeeloApi.WebUI.Support.Configuration.Swagger.ServiceCollectionExtension">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:WeeloApi.WebUI.Support.Configuration.Swagger.ServiceCollectionExtension.ConfigureSwaggerDocument(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            
+            </summary>
+            <param name="services"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WeeloApi.WebUI.Support.Configuration.Swagger.ServiceCollectionExtension.AddCustomCors(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            
+            </summary>
+            <param name="services"></param>
+            <param name="config"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>
